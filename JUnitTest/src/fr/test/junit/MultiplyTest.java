@@ -24,7 +24,6 @@ public class MultiplyTest {
 	    @Parameter(2)
 	    public int result;
 
-
 	    // creates the test data
 	    @Parameters
 	    public Collection<Object[]> data() {
@@ -32,13 +31,11 @@ public class MultiplyTest {
 	        return Arrays.asList(data);
 	    }
 
-
 	    @Test
 	    public void testMultiplyException() {
 	        MyClass tester = new MyClass();
 	        assertEquals("Result", result, tester.multiply(m1, m2));
 	    }
-
 
 	    // class to be tested
 	    class MyClass {
