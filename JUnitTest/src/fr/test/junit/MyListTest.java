@@ -1,5 +1,7 @@
 package fr.test.junit;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +11,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import fr.main.junit.MyList;
 import fr.main.junit.MyListImpl;
@@ -46,6 +49,15 @@ public class MyListTest {
 			sut.add(new Integer(i));   //on ajoute les nombres au début de chaque test
 	        }
 	}
+	@Test
+	public void testAdd() {
+		assertEquals(expectedSize, sut.getSize());
+		sut.add(new Integer(8));
+		assertEquals(expectedSize+1, sut.getSize());
+		for(int i = 0; i < testSet.size(); i++) {
+			assertEquals(testSet.get(i), sut.getAt(i));
+	        }
+	}
 
 	@After
 	public void tearDown() throws Exception {
@@ -59,5 +71,6 @@ public class MyListTest {
 	public static void setExpectedSize(int expectedSize) {
 		MyListTest.expectedSize = expectedSize;
 	}
+	
 
 }
